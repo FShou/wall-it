@@ -13,7 +13,7 @@ data class GetPhotoResponse(
 	val createdAt: String? = null,
 
 	@SerialName("description")
-	val description: String? = null,
+	val description: String,
 
 	@SerialName("liked_by_user")
 	val likedByUser: Boolean? = null,
@@ -22,7 +22,7 @@ data class GetPhotoResponse(
 	val publicDomain: Boolean? = null,
 
 	@SerialName("urls")
-	val urls: Urls? = null,
+	val urls: Urls,
 
 	@SerialName("updated_at")
 	val updatedAt: String? = null,
@@ -40,7 +40,7 @@ data class GetPhotoResponse(
 	val location: Location? = null,
 
 	@SerialName("id")
-	val id: String? = null,
+	val id: String,
 
 	@SerialName("user")
 	val user: User? = null,
@@ -59,19 +59,19 @@ data class GetPhotoResponse(
 data class Urls(
 
 	@SerialName("small")
-	val small: String? = null,
+	val small: String,
 
 	@SerialName("thumb")
-	val thumb: String? = null,
+	val thumb: String,
 
 	@SerialName("raw")
-	val raw: String? = null,
+	val raw: String,
 
 	@SerialName("regular")
-	val regular: String? = null,
+	val regular: String,
 
 	@SerialName("full")
-	val full: String? = null
+	val full: String
 )
 
 @Serializable

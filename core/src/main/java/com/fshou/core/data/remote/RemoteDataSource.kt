@@ -3,20 +3,20 @@ package com.fshou.core.data.remote
 import android.util.Log
 import com.fshou.core.data.remote.api.UnsplashApi
 import com.fshou.core.data.remote.response.GetPhotoResponse
-import com.fshou.core.data.remote.response.Photo
+import com.fshou.core.data.remote.response.PhotoEntity
 import com.fshou.core.util.FetchState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class RemoteDataSource(private val unsplashApi: UnsplashApi) {
-    suspend fun searchPhotos(term: String, color: String, sort: String) =
-        flow<FetchState<List<Photo>>> {
+    suspend fun searchPhotos(term: String, color: String?, sort: String?) =
+        flow<FetchState<List<PhotoEntity>>> {
             emit(FetchState.Loading())
             try {
                 val response = unsplashApi.searchPhotos(term, color, sort)
                 val data = response.results
-                if (data?.isNotEmpty() == true) {
+                if (data.isNotEmpty()) {
                     emit(FetchState.Success(data))
                 } else {
                     emit(FetchState.Error("Null"))

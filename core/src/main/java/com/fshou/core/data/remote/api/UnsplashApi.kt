@@ -6,6 +6,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.http.appendPathSegments
+import io.ktor.http.path
 
 class UnsplashApi(private val httpClient: HttpClient) {
 
@@ -14,10 +15,9 @@ class UnsplashApi(private val httpClient: HttpClient) {
         colorFilter: String? = null,
         sortFilter: String? = null,
     ): SearchResponse {
-        return httpClient.get("https://api.unsplash.com/") {
+        return httpClient.get{
             url {
-                appendPathSegments("search", "photos")
-                parameters.append("client-id", "G2saBJvUy0MmgRaixv97sPRNH5g3uqUa-jV1gwRRKIY")
+                path("search/photos")
                 parameters.append("query", term)
                 if (colorFilter != null) {
                     parameters.append("color", colorFilter)
@@ -30,10 +30,9 @@ class UnsplashApi(private val httpClient: HttpClient) {
     }
 
      suspend fun getPhotoById(id: String) : GetPhotoResponse {
-        return httpClient.get("https://api.unsplash.com/") {
+        return httpClient.get {
             url {
-                appendPathSegments("photos",id)
-                parameters.append("client-id", "G2saBJvUy0MmgRaixv97sPRNH5g3uqUa-jV1gwRRKIY")
+                path("photos/${id}")
             }
         }.body()
     }

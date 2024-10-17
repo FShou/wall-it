@@ -13,26 +13,27 @@ data class SearchResponse(
 	val totalPages: Int? = null,
 
 	@SerialName("results")
-	val results: List<Photo>? = null
+	val results: List<PhotoEntity>
 ) 
 
 
 
 @Serializable
-data class Photo(
+data class PhotoEntity(
 
 	@SerialName("id")
-	val id: String? = null,
+	val id: String,
 
 	@SerialName("description")
-	val description: String? = null,
+	val description: String,
 
 	@SerialName("urls")
-	val urls: Urls? = null,
+	val urls: Urls,
 
 	@SerialName("user")
-	val user: User? = null,
+	val user: User,
 )
+
 
 @Serializable
 data class ProfileImage(

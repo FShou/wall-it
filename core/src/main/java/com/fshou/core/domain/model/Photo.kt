@@ -5,6 +5,6 @@ data class Photo(
     val description: String,
     val displayUrl: String,
     val downloadUrl: String,
-    val updatedAt: String?,
-    val location : Location?
+    val updatedAt: String? = null,
+    val location : Location? = null
 )
