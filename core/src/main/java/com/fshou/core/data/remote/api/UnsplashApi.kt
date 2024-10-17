@@ -5,7 +5,6 @@ import com.fshou.core.data.remote.response.SearchResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
-import io.ktor.http.appendPathSegments
 import io.ktor.http.path
 
 class UnsplashApi(private val httpClient: HttpClient) {

@@ -20,13 +20,12 @@ class PhotoRepository(
     override suspend fun getPhotoDetail(id: String): Flow<FetchState<Photo>> =
         remoteDataSource.getPhotoDetail(id)
             .map { fetchState ->
-                when(fetchState) {
+                when (fetchState) {
                     is FetchState.Error -> FetchState.Error(fetchState.message.toString())
                     is FetchState.Loading -> FetchState.Loading()
                     is FetchState.Success -> FetchState.Success(fetchState.data!!.toPhoto())
                 }
-
-    }.flowOn(Dispatchers.IO)
+            }.flowOn(Dispatchers.IO)
 
     override suspend fun searchPhotos(
         term: String,

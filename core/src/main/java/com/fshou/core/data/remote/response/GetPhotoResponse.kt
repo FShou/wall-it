@@ -3,6 +3,7 @@ package com.fshou.core.data.remote.response
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+// TODO: Fix this mess
 @Serializable
 data class GetPhotoResponse(
 
