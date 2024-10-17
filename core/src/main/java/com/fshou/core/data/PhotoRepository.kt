@@ -45,7 +45,11 @@ class PhotoRepository(
             }.flowOn(Dispatchers.IO)
     }
 
-    override fun bookmarkPhotos(id: String) {
+    override fun toggleBookmarkPhoto(photo: Photo) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getBookmarkedPhotos(): List<Photo> {
         TODO("Not yet implemented")
     }
 }

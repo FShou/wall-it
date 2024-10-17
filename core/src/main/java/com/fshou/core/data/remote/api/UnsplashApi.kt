@@ -1,6 +1,6 @@
 package com.fshou.core.data.remote.api
 
-import com.fshou.core.data.remote.response.GetPhotoResponse
+import com.fshou.core.data.remote.response.PhotoDetailResponse
 import com.fshou.core.data.remote.response.SearchResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -28,7 +28,7 @@ class UnsplashApi(private val httpClient: HttpClient) {
         }.body()
     }
 
-     suspend fun getPhotoById(id: String) : GetPhotoResponse {
+     suspend fun getPhotoById(id: String) : PhotoDetailResponse {
         return httpClient.get {
             url {
                 path("photos/${id}")
