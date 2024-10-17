@@ -1,66 +1,44 @@
 package com.fshou.core.data.remote.response
 
-import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-@Parcelize
+@Serializable
 data class SearchResponse(
 
-	@field:SerializedName("total")
+	@SerialName("total")
 	val total: Int? = null,
 
-	@field:SerializedName("total_pages")
+	@SerialName("total_pages")
 	val totalPages: Int? = null,
 
-	@field:SerializedName("results")
-	val results: List<Photo?>? = null
-) : Parcelable
+	@SerialName("results")
+	val results: List<Photo>? = null
+) 
 
 
 
-@Parcelize
+@Serializable
 data class Photo(
 
-	@field:SerializedName("id")
+	@SerialName("id")
 	val id: String? = null,
 
-	@field:SerializedName("description")
+	@SerialName("description")
 	val description: String? = null,
 
-	@field:SerializedName("urls")
+	@SerialName("urls")
 	val urls: Urls? = null,
 
-	@field:SerializedName("user")
+	@SerialName("user")
 	val user: User? = null,
-) : Parcelable
+)
 
-@Parcelize
-data class User(
-
-	@field:SerializedName("profile_image")
-	val profileImage: ProfileImage? = null,
-
-	@field:SerializedName("name")
-	val name: String? = null,
-
-) : Parcelable
-
-@Parcelize
+@Serializable
 data class ProfileImage(
 
-	@field:SerializedName("small")
+	@SerialName("small")
 	val small: String? = null,
 
-) : Parcelable
+)
 
-@Parcelize
-data class Urls(
-
-	@field:SerializedName("small")
-	val small: String? = null,
-//
-//	@field:SerializedName("regular")
-//	val regular: String? = null,
-
-) : Parcelable

@@ -4,3 +4,11 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android) apply false
     alias(libs.plugins.android.library) apply false
 }
+
+buildscript {
+    dependencies {
+        val kotlinVersion = "1.9.0"
+        classpath(kotlin("gradle-plugin", version = kotlinVersion))
+        classpath(kotlin("serialization", version = kotlinVersion))
+    }
+}

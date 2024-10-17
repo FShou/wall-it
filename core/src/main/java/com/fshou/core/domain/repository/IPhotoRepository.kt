@@ -1,6 +1,5 @@
 package com.fshou.core.domain.repository
 
-import com.fshou.core.data.remote.response.SearchResponse
 import com.fshou.core.domain.model.Photo
 import com.fshou.core.util.ColorFilter
 import com.fshou.core.util.FetchState
