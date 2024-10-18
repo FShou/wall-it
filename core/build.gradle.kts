@@ -32,6 +32,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -62,7 +66,11 @@ dependencies {
     implementation(libs.ktor.client.logging)
 
     // koin
-    implementation(libs.koin.android)
+    api(libs.koin.android)
+
+    // coil
+    api(libs.coil)
+    api(libs.coil.network.okhttp)
 
     implementation(libs.kotlinx.serialization.json)
 
