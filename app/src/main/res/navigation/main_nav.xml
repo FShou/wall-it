@@ -3,13 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/onBoardingFragment">
+    app:startDestination="@id/discoverFragment">
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.fshou.wallit.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.fshou.wallit.detail.DetailFragment"
@@ -24,15 +19,7 @@
             android:id="@+id/action_discoverFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/onBoardingFragment"
-        android:name="com.fshou.wallit.onboarding.OnBoardingFragment"
-        android:label="fragment_on_boarding"
-        tools:layout="@layout/fragment_on_boarding" >
-        <action
-            android:id="@+id/action_onBoardingFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/bookmarkFragment"
         android:name="com.fshou.wallit.bookmark.BookmarkFragment"
@@ -42,4 +29,9 @@
             android:id="@+id/action_bookmarkFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.fshou.wallit.settings.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
 </navigation>

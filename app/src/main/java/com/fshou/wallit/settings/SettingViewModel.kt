@@ -1,7 +1,7 @@
-package com.fshou.wallit.home
+package com.fshou.wallit.settings
 
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class SettingViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }
