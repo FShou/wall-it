@@ -1,5 +1,6 @@
 package com.fshou.core.util
 
+import com.fshou.core.data.local.entity.PhotoEntity
 import com.fshou.core.data.remote.response.PhotoDetailResponse
 import com.fshou.core.data.remote.response.SearchPhotoResponse
 import com.fshou.core.domain.model.Photo
@@ -24,4 +25,32 @@ fun PhotoDetailResponse.toPhoto(): Photo = Photo(
     updatedAt = this.updatedAt,
     username = this.user.name,
     userProfileImageUrl = this.user.profileImage.medium
+)
+
+fun Photo.toPhotoEntity() = PhotoEntity(
+    id,
+    description,
+    country,
+    city,
+    urlRegular,
+    updatedAt,
+    username,
+    userProfileImageUrl,
+    width,
+    height,
+    isBookmarked
+)
+
+fun PhotoEntity.toPhoto() = Photo(
+    id,
+    description,
+    country,
+    city,
+    urlRegular,
+    updatedAt,
+    username,
+    userProfileImageUrl,
+    width,
+    height,
+    isBookmarked
 )
