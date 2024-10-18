@@ -1,6 +1,5 @@
 package com.fshou.core.di
 
-import com.fshou.core.data.remote.RemoteDataSource
 import com.fshou.core.data.remote.api.UnsplashApi
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
@@ -39,8 +38,5 @@ val networkModule = module {
             }
         }
     }
-
-    single {
-        RemoteDataSource(UnsplashApi(get()))
-    }
+    single { UnsplashApi(get()) }
 }
