@@ -1,5 +1,6 @@
 package com.fshou.core.data
 
+import com.fshou.core.data.local.LocalDataSource
 import com.fshou.core.data.remote.RemoteDataSource
 import com.fshou.core.domain.model.Photo
 import com.fshou.core.domain.repository.IPhotoRepository
@@ -9,13 +10,15 @@ import com.fshou.core.util.SortFilter
 import com.fshou.core.util.getColor
 import com.fshou.core.util.getSort
 import com.fshou.core.util.toPhoto
+import com.fshou.core.util.toPhotoEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 
 class PhotoRepository(
-    private val remoteDataSource: RemoteDataSource
+    private val remoteDataSource: RemoteDataSource,
+    private val localDataSource: LocalDataSource
 ) : IPhotoRepository {
     override suspend fun getPhotoDetail(id: String): Flow<FetchState<Photo>> =
         remoteDataSource.getPhotoDetail(id)
@@ -45,11 +48,19 @@ class PhotoRepository(
             }.flowOn(Dispatchers.IO)
     }
 
-    override fun toggleBookmarkPhoto(photo: Photo) {
-        TODO("Not yet implemented")
+    override suspend fun toggleBookmarkPhoto(photo: Photo) {
+        val photoEntity = photo.toPhotoEntity()
+        if (photoEntity.isBookmarked) {
+            localDataSource.insertPhoto(photoEntity)
+        } else {
+            localDataSource.deletePhoto(photoEntity)
+        }
     }
 
-    override fun getBookmarkedPhotos(): List<Photo> {
-        TODO("Not yet implemented")
+    override fun getBookmarkedPhotos(): Flow<List<Photo>> {
+        return localDataSource.getAllPhotos().map { listPhoto ->
+            listPhoto.map { photoEntity ->
+            photoEntity.toPhoto()
+        } }
     }
 }

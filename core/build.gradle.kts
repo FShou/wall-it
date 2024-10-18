@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.ksp)
     id("org.jetbrains.kotlin.plugin.serialization")
 }
 
@@ -43,8 +44,14 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // coroutine
+    implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
+    // room
+    val room_version = "2.6.1"
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
     // ktor
     val ktorVersion = "3.0.0"
