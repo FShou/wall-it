@@ -30,6 +30,12 @@ data class SearchPhotoResponse(
 	@SerialName("alt_description")
 	val altDescription: String? = null,
 
+	@SerialName("width")
+	val width: Int,
+
+	@SerialName("height")
+	val height: Int,
+
 	@SerialName("updated_at")
 	val updatedAt: String,
 

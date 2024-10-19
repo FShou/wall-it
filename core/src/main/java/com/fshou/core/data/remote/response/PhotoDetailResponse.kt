@@ -21,7 +21,10 @@ data class PhotoDetailResponse(
     val updatedAt: String,
 
     @SerialName("width")
-    val width: Int? = null,
+    val width: Int,
+
+    @SerialName("height")
+    val height: Int,
 
     @SerialName("location")
     val location: Location? = null,
@@ -29,8 +32,7 @@ data class PhotoDetailResponse(
     @SerialName("user")
     val user: User,
 
-    @SerialName("height")
-    val height: Int? = null,
+
 
     @SerialName("exif")
     val exif: Exif? = null

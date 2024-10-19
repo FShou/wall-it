@@ -2,7 +2,7 @@ package com.fshou.core.di
 
 import com.fshou.core.data.remote.api.UnsplashApi
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.okhttp.OkHttp
+import io.ktor.client.engine.android.Android
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.LogLevel
@@ -18,7 +18,7 @@ import org.koin.dsl.module
 
 val networkModule = module {
     single {
-        HttpClient(OkHttp) {
+        HttpClient(Android) {
             defaultRequest {
                 url("https://api.unsplash.com/")
                 header(HttpHeaders.ContentType, ContentType.Application.Json)

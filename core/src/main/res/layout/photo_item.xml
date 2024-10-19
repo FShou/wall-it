@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="3dp"
     android:padding="3dp"
     android:background="@drawable/border_gradient"
     tools:layout_gravity="center"
@@ -17,15 +18,17 @@
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <ImageView
                 android:id="@+id/iv_thumbnail"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
                 tools:src="@drawable/photo_preview"
                 tools:rotation="0"
                 />
@@ -47,7 +50,7 @@
                 android:textColor="#FFFFFF"
                 android:layout_marginBottom="32dp"
                 android:layout_marginLeft="20dp"
-                android:textSize="18sp"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

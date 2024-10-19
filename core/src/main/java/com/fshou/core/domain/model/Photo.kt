@@ -8,10 +8,11 @@ data class Photo(
     val city: String? = null,
     val urlRegular: String,
     // TODO: Url Thumbnail instead for List Photo
+    val urlThumb: String,
     val updatedAt: String,
     val username: String,
     val userProfileImageUrl: String,
-    val width: Int? = null,
-    val height: Int? = null,
+    val width: Int,
+    val height: Int,
     val isBookmarked: Boolean = false
 )
