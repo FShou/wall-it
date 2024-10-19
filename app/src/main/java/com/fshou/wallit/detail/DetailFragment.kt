@@ -28,7 +28,6 @@ class DetailFragment : Fragment() {
         return binding.root
     }
 
-    fun FragmentDetailBinding.setUpView(){
-        viewModel // TODO
+    private fun FragmentDetailBinding.setUpView(){
     }
 }
