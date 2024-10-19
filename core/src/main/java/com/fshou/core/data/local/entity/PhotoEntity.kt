@@ -16,6 +16,9 @@ data class PhotoEntity(
     @ColumnInfo(name = "url_regular")
     val urlRegular: String,
 
+    @ColumnInfo(name = "url_thumb")
+    val urlThumb: String,
+
     @ColumnInfo(name = "updated_at")
     val updatedAt: String,
 
@@ -25,8 +28,8 @@ data class PhotoEntity(
     @ColumnInfo(name = "user_profile_image_url")
     val userProfileImageUrl: String,
 
-    val width: Int? = null,
-    val height: Int? = null,
+    val width: Int,
+    val height: Int,
 
     @ColumnInfo(name = "is_bookmarked", defaultValue = "false")
     val isBookmarked: Boolean = false

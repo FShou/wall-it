@@ -17,6 +17,8 @@ class UnsplashApi(private val httpClient: HttpClient) {
         return httpClient.get{
             url {
                 path("search/photos")
+                parameters.append("per_page", "30")
+                parameters.append("orientation","portrait")
                 parameters.append("query", term)
                 if (colorFilter != null) {
                     parameters.append("color", colorFilter)

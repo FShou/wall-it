@@ -60,6 +60,8 @@ class DiscoverFragment : Fragment() {
             findNavController().navigate(R.id.detailFragment)
         }
         val staggered = StaggeredGridLayoutManager(2,RecyclerView.VERTICAL)
+        staggered.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
+        rvSearchPhoto.setHasFixedSize(true)
         rvSearchPhoto.adapter = rvAdapter
         rvSearchPhoto.layoutManager = staggered
     }

@@ -8,7 +8,10 @@ import com.fshou.core.domain.model.Photo
 fun SearchPhotoResponse.toPhoto(): Photo = Photo(
     id = this.id,
     description = this.description ?: this.altDescription ?: "",
+    width = this.width,
+    height = this.height,
     urlRegular = this.urls.regular,
+    urlThumb = this.urls.thumb,
     updatedAt = this.updatedAt,
     username = this.user.name,
     userProfileImageUrl = this.user.profileImage.medium
@@ -22,6 +25,7 @@ fun PhotoDetailResponse.toPhoto(): Photo = Photo(
     country = this.location?.country,
     city = this.location?.city,
     urlRegular = this.urls.regular,
+    urlThumb = this.urls.thumb,
     updatedAt = this.updatedAt,
     username = this.user.name,
     userProfileImageUrl = this.user.profileImage.medium
@@ -33,6 +37,7 @@ fun Photo.toPhotoEntity() = PhotoEntity(
     country,
     city,
     urlRegular,
+    urlThumb,
     updatedAt,
     username,
     userProfileImageUrl,
@@ -47,6 +52,7 @@ fun PhotoEntity.toPhoto() = Photo(
     country,
     city,
     urlRegular,
+    urlThumb,
     updatedAt,
     username,
     userProfileImageUrl,

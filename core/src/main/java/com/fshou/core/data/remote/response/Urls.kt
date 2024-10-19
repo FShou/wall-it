@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Urls(
 
-    @SerialName("small")
+    @SerialName("small_s3")
     val small: String,
 
     @SerialName("thumb")
