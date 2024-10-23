@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Wall It</string>
     <string name="discover">Discover</string>
+    <string name="settings">Settings</string>
+    <string name="bookmark">Bookmark</string>
 </resources>

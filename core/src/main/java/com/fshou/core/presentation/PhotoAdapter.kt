@@ -44,7 +44,7 @@ class PhotoAdapter: ListAdapter<Photo,PhotoAdapter.PhotoItemViewHolder>(diffUtil
             itemView.setOnClickListener { onItemClick?.invoke(data) }
             binding.apply {
                 tvDescription.text = data.description
-                ivThumbnail.load(data.urlThumb)
+                ivThumbnail.load(data.urlRegular)
             }
             binding.root.visibility = View.VISIBLE
         }
