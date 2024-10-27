@@ -5,9 +5,9 @@ import com.fshou.core.data.remote.RemoteDataSource
 import com.fshou.core.domain.model.Photo
 import com.fshou.core.domain.repository.IPhotoRepository
 import com.fshou.core.util.ColorFilter
+import com.fshou.core.util.ColorFilter.Companion.getColor
 import com.fshou.core.util.FetchState
 import com.fshou.core.util.SortFilter
-import com.fshou.core.util.getColor
 import com.fshou.core.util.getSort
 import com.fshou.core.util.toPhoto
 import com.fshou.core.util.toPhotoEntity
