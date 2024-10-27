@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.fshou.core.util.ColorFilter.Companion.addColorFilterChips
 import com.fshou.core.util.ColorFilter.Companion.chipIdToColorFilterMap
 import com.fshou.core.util.ColorFilter.Companion.getColorFilterFromChipId
 import com.fshou.wallit.databinding.FilterBottomSheetContentBinding
+import com.fshou.wallit.utils.addColorFilterChips
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -38,7 +38,7 @@ class FilterBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     private fun FilterBottomSheetContentBinding.setUpView() {
-        chipGroup.addColorFilterChips { colorFilter ->
+        chipColorGroup.addColorFilterChips { colorFilter ->
             if (viewModel.selectedColor.value == colorFilter) {
                 viewModel.selectColorFilter(null)
             } else {
@@ -47,12 +47,12 @@ class FilterBottomSheetFragment : BottomSheetDialogFragment() {
             }
         }
         viewModel.selectedColor.observe(viewLifecycleOwner) { selectedColor ->
-            for (i in 0 until chipGroup.childCount) {
-                val chip = chipGroup.getChildAt(i) as Chip
+            for (i in 0 until chipColorGroup.childCount) {
+                val chip = chipColorGroup.getChildAt(i) as Chip
                 chip.isChecked = selectedColor == getColorFilterFromChipId(
                     chip.id,
                     chipIdToColorFilterMap
-                ) // Update checked state
+                )
             }
         }
     }

@@ -15,10 +15,9 @@
         android:textSize="20sp" />
 
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_group"
+        android:id="@+id/chip_color_group"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content"/>
 
 
-    </com.google.android.material.chip.ChipGroup>
 </LinearLayout>
