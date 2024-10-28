@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.fshou.core.util.ColorFilter.Companion.chipIdToColorFilterMap
 import com.fshou.core.util.ColorFilter.Companion.getColorFilterFromChipId
+import com.fshou.core.util.SortFilter
 import com.fshou.wallit.databinding.FilterBottomSheetContentBinding
 import com.fshou.wallit.utils.addColorFilterChips
+import com.fshou.wallit.utils.addSortFilterChips
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -46,6 +48,24 @@ class FilterBottomSheetFragment : BottomSheetDialogFragment() {
 
             }
         }
+        chipSortGroup.addSortFilterChips { sortFilter ->
+            if (viewModel.selectedSort.value == sortFilter) {
+                viewModel.selectSortFilter(null)
+            } else {
+                viewModel.selectSortFilter(sortFilter)
+
+            }
+        }
+
+        viewModel.selectedSort.observe(viewLifecycleOwner) { selectedSort ->
+            for (i in 0 until chipSortGroup.childCount) {
+                val chip = chipSortGroup.getChildAt(i) as Chip
+                chip.isChecked = (i == 0 && selectedSort == SortFilter.RELEVANT) or
+                        (i == 1 && selectedSort == SortFilter.LATEST)
+            }
+
+        }
+
         viewModel.selectedColor.observe(viewLifecycleOwner) { selectedColor ->
             for (i in 0 until chipColorGroup.childCount) {
                 val chip = chipColorGroup.getChildAt(i) as Chip
