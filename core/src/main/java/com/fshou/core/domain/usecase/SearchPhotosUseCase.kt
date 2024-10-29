@@ -7,5 +7,5 @@ import com.fshou.core.util.SortFilter
 import kotlinx.coroutines.flow.Flow
 
 fun interface SearchPhotosUseCase {
-    suspend operator fun invoke(term: String, color: ColorFilter?, sortFilter: SortFilter?): Flow<FetchState<List<Photo>>>
+     operator fun invoke(term: String, color: ColorFilter?, sortFilter: SortFilter?): Flow<FetchState<List<Photo>>>
 }

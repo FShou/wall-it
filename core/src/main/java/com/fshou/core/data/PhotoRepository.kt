@@ -30,7 +30,7 @@ class PhotoRepository(
                 }
             }.flowOn(Dispatchers.IO)
 
-    override suspend fun searchPhotos(
+    override  fun searchPhotos(
         term: String,
         colorFilter: ColorFilter?,
         sortFilter: SortFilter?

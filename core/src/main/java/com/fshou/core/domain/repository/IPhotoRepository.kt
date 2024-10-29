@@ -10,7 +10,7 @@ interface IPhotoRepository {
 
     suspend fun getPhotoDetail(id: String) : Flow<FetchState<Photo>>
 
-    suspend fun searchPhotos(term: String, colorFilter: ColorFilter?, sortFilter: SortFilter?) : Flow<FetchState<List<Photo>>>
+     fun searchPhotos(term: String, colorFilter: ColorFilter?, sortFilter: SortFilter?) : Flow<FetchState<List<Photo>>>
 
     suspend fun toggleBookmarkPhoto(photo: Photo)
 

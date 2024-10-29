@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class RemoteDataSource(private val unsplashApi: UnsplashApi) {
-    suspend fun searchPhotos(
+     fun searchPhotos(
         term: String, color: String?, sort: String?
     ) = flow<FetchState<List<SearchPhotoResponse>>> {
         emit(FetchState.Loading())
