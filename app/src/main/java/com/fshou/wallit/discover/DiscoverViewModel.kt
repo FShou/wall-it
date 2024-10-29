@@ -14,10 +14,10 @@ import com.fshou.core.util.SortFilter
 class DiscoverViewModel(private val searchPhotosUseCase: SearchPhotosUseCase) : ViewModel() {
 
 
-    val _selectedColor = MutableLiveData<ColorFilter>(ColorFilter.BLUE)
+    private val _selectedColor = MutableLiveData<ColorFilter?>(null)
     val selectedColor: LiveData<ColorFilter?> get() = _selectedColor
 
-    fun selectColorFilter(colorFilter: ColorFilter) {
+    fun selectColorFilter(colorFilter: ColorFilter?) {
         _selectedColor.value = colorFilter // Set the selected color filter
     }
 

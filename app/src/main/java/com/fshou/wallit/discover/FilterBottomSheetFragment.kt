@@ -43,7 +43,7 @@ class FilterBottomSheetFragment : BottomSheetDialogFragment() {
     private fun FilterBottomSheetContentBinding.setUpView() {
         chipColorGroup.addColorFilterChips { colorFilter ->
             if (viewModel.selectedColor.value == colorFilter) {
-                viewModel.selectColorFilter(ColorFilter.BLUE)
+                viewModel.selectColorFilter(null)
             } else {
                 viewModel.selectColorFilter(colorFilter)
 
