@@ -1,12 +1,12 @@
 package com.fshou.core.presentation
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil3.load
+import coil3.request.crossfade
 import com.fshou.core.databinding.PhotoItemBinding
 import com.fshou.core.domain.model.Photo
 
@@ -33,20 +33,18 @@ class PhotoAdapter: ListAdapter<Photo,PhotoAdapter.PhotoItemViewHolder>(diffUtil
     inner class PhotoItemViewHolder(private val binding: PhotoItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(data: Photo){
 
-
-            val width = binding.ivThumbnail.width
-            val height = (width * data.height / data.width)
-
-            binding.ivThumbnail.layoutParams.height = height
-            binding.ivThumbnail.requestLayout()
-
-
-            itemView.setOnClickListener { onItemClick?.invoke(data) }
             binding.apply {
+                ivThumbnail.load(data.urlRegular) {
+                    crossfade(500)
+                }
+                val width = binding.ivThumbnail.layoutParams.width
+                val height = (width * data.height / data.width)
+
                 tvDescription.text = data.description
-                ivThumbnail.load(data.urlRegular)
+                ivThumbnail.layoutParams.height = height
+                ivThumbnail.requestLayout()
             }
-            binding.root.visibility = View.VISIBLE
+            itemView.setOnClickListener { onItemClick?.invoke(data) }
         }
     }
 

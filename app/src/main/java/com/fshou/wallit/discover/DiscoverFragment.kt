@@ -85,5 +85,6 @@ class DiscoverFragment : Fragment() {
             return
         }
         rvAdapter.submitList(data)
+        binding.rvSearchPhoto.smoothScrollToPosition(0)
     }
 }
