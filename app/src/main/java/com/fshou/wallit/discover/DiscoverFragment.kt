@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -58,8 +59,15 @@ class DiscoverFragment : Fragment() {
                 )
             }
         }
-
-
+        searchBar.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                val query = searchBar.text.toString()
+                viewModel.setSearchTerm(query)
+                true
+            } else {
+                false
+            }
+        }
     }
 
     private fun handleSearchFetch(it: FetchState<List<Photo>>) {
@@ -70,6 +78,7 @@ class DiscoverFragment : Fragment() {
 
             is FetchState.Loading -> {
                 Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                binding.rvSearchPhoto.smoothScrollToPosition(0)
             }
 
             is FetchState.Success -> {
@@ -85,6 +94,5 @@ class DiscoverFragment : Fragment() {
             return
         }
         rvAdapter.submitList(data)
-        binding.rvSearchPhoto.smoothScrollToPosition(0)
     }
 }

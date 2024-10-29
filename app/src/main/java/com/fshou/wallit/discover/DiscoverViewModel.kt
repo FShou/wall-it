@@ -10,7 +10,6 @@ import com.fshou.core.util.ColorFilter
 import com.fshou.core.util.SortFilter
 
 
-
 class DiscoverViewModel(private val searchPhotosUseCase: SearchPhotosUseCase) : ViewModel() {
 
 
@@ -21,16 +20,26 @@ class DiscoverViewModel(private val searchPhotosUseCase: SearchPhotosUseCase) : 
         _selectedColor.value = colorFilter // Set the selected color filter
     }
 
-    val _selectedSort = MutableLiveData<SortFilter?>(null)
+    private val _selectedSort = MutableLiveData<SortFilter?>(null)
     val selectedSort: LiveData<SortFilter?> get() = _selectedSort
 
     fun selectSortFilter(sortFilter: SortFilter?) {
         _selectedSort.value = sortFilter // Set the selected color filter
     }
 
-    val listSearchedPhoto =  _selectedColor.switchMap { color ->
-        _selectedSort.switchMap { sort ->
-            searchPhotosUseCase("minimal", color, sort).asLiveData()
-        }
+    private val _searchTerm = MutableLiveData<String?>(null)
+    val searchTerm: LiveData<String?> get() = _searchTerm
+
+    fun setSearchTerm(term: String) {
+        _searchTerm.value = term
     }
+
+    val listSearchedPhoto =
+        _searchTerm.switchMap { term ->
+            _selectedColor.switchMap { color ->
+                _selectedSort.switchMap { sort ->
+                    searchPhotosUseCase(term ?: "minimal", color, sort).asLiveData()
+                }
+            }
+        }
 }
