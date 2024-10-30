@@ -89,10 +89,13 @@ class DiscoverFragment : Fragment() {
 
     private fun setListPhoto(data: List<Photo>?) {
         if (data.isNullOrEmpty()) {
-            // TODO: Empty or null
-            println("EMPTY")
+            binding.rvSearchPhoto.visibility = View.GONE
+            binding.emptyLayout.root.visibility = View.VISIBLE
+            binding.emptyLayout.tvSuggestion.text = getString(R.string.photo_not_found)
             return
         }
+        binding.rvSearchPhoto.visibility = View.VISIBLE
+        binding.emptyLayout.root.visibility = View.GONE
         rvAdapter.submitList(data)
     }
 }

@@ -10,19 +10,14 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class RemoteDataSource(private val unsplashApi: UnsplashApi) {
-     fun searchPhotos(
+    fun searchPhotos(
         term: String, color: String?, sort: String?
     ) = flow<FetchState<List<SearchPhotoResponse>>> {
         emit(FetchState.Loading())
         try {
             val response = unsplashApi.searchPhotos(term, color, sort)
             val data = response.results
-            if (data.isNotEmpty()) {
-                emit(FetchState.Success(data))
-            } else {
-                emit(FetchState.Error("Null"))
-
-            }
+            emit(FetchState.Success(data))
         } catch (e: Exception) {
             emit(FetchState.Error(e.message.toString()))
             Log.e("RemoteDataSource", e.toString())
