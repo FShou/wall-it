@@ -14,6 +14,7 @@ fun SearchPhotoResponse.toPhoto(): Photo = Photo(
     urlThumb = this.urls.thumb,
     updatedAt = this.updatedAt,
     username = this.user.name,
+    color = this.color,
     userProfileImageUrl = this.user.profileImage.medium
 )
 
@@ -28,6 +29,7 @@ fun PhotoDetailResponse.toPhoto(): Photo = Photo(
     urlThumb = this.urls.thumb,
     updatedAt = this.updatedAt,
     username = this.user.name,
+    color = this.color,
     userProfileImageUrl = this.user.profileImage.medium
 )
 
@@ -40,6 +42,7 @@ fun Photo.toPhotoEntity() = PhotoEntity(
     urlThumb,
     updatedAt,
     username,
+    color,
     userProfileImageUrl,
     width,
     height,
@@ -55,6 +58,7 @@ fun PhotoEntity.toPhoto() = Photo(
     urlThumb,
     updatedAt,
     username,
+    color,
     userProfileImageUrl,
     width,
     height,

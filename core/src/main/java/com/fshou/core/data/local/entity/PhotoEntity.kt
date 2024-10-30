@@ -25,6 +25,9 @@ data class PhotoEntity(
     @ColumnInfo(name = "username")
     val username: String,
 
+    @ColumnInfo(name = "color")
+    val color: String,
+
     @ColumnInfo(name = "user_profile_image_url")
     val userProfileImageUrl: String,
 

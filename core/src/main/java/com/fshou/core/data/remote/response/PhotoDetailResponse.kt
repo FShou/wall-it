@@ -20,6 +20,9 @@ data class PhotoDetailResponse(
     @SerialName("updated_at")
     val updatedAt: String,
 
+    @SerialName("color")
+    val color: String,
+
     @SerialName("width")
     val width: Int,
 

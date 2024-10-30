@@ -11,8 +11,10 @@ data class Photo(
     val urlThumb: String,
     val updatedAt: String,
     val username: String,
+    val color: String,
     val userProfileImageUrl: String,
     val width: Int,
     val height: Int,
     val isBookmarked: Boolean = false
+
 )
