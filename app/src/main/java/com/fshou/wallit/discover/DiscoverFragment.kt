@@ -45,7 +45,10 @@ class DiscoverFragment : Fragment() {
     private fun FragmentDiscoverBinding.setUpView() {
         rvAdapter.onItemClick = { photo ->
             // TODO: PHOTO Argument for
-            findNavController().navigate(R.id.detailFragment)
+            val bundle = Bundle().apply {
+                putString("photoId", photo.id)
+            }
+            findNavController().navigate(R.id.detailFragment, bundle)
         }
         val staggered = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
         staggered.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS

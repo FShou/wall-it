@@ -9,7 +9,12 @@
         android:id="@+id/detailFragment"
         android:name="com.fshou.wallit.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="photoId"
+            app:argType="string"
+            />
+    </fragment>
     <fragment
         android:id="@+id/discoverFragment"
         android:name="com.fshou.wallit.discover.DiscoverFragment"

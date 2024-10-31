@@ -14,18 +14,18 @@ class DetailFragment : Fragment() {
     private val viewModel: DetailViewModel by viewModels()
     private val binding by lazy { FragmentDetailBinding.inflate(layoutInflater) }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        binding.setUpView()
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.setUpView()
+        val photoId = arguments?.getString("photoId")
+        println("PHOTOID $photoId")
     }
 
     private fun FragmentDetailBinding.setUpView(){
