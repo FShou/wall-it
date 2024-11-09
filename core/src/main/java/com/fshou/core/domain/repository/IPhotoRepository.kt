@@ -8,9 +8,13 @@ import kotlinx.coroutines.flow.Flow
 
 interface IPhotoRepository {
 
-    suspend fun getPhotoDetail(id: String) : Flow<FetchState<Photo>>
+    fun getPhotoDetail(id: String): Flow<FetchState<Photo>>
 
-     fun searchPhotos(term: String, colorFilter: ColorFilter?, sortFilter: SortFilter?) : Flow<FetchState<List<Photo>>>
+    fun searchPhotos(
+        term: String,
+        colorFilter: ColorFilter?,
+        sortFilter: SortFilter?
+    ): Flow<FetchState<List<Photo>>>
 
     suspend fun toggleBookmarkPhoto(photo: Photo)
 

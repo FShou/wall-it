@@ -24,7 +24,7 @@ class RemoteDataSource(private val unsplashApi: UnsplashApi) {
         }
     }.flowOn(Dispatchers.IO)
 
-    suspend fun getPhotoDetail(id: String) = flow<FetchState<PhotoDetailResponse>> {
+    fun getPhotoDetail(id: String) = flow<FetchState<PhotoDetailResponse>> {
         emit(FetchState.Loading())
         try {
             val response = unsplashApi.getPhotoById(id)

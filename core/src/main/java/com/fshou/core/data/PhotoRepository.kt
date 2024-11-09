@@ -20,7 +20,7 @@ class PhotoRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
 ) : IPhotoRepository {
-    override suspend fun getPhotoDetail(id: String): Flow<FetchState<Photo>> =
+    override  fun getPhotoDetail(id: String): Flow<FetchState<Photo>> =
         remoteDataSource.getPhotoDetail(id)
             .map { fetchState ->
                 when (fetchState) {

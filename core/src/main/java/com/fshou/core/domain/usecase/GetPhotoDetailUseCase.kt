@@ -5,5 +5,5 @@ import com.fshou.core.util.FetchState
 import kotlinx.coroutines.flow.Flow
 
 fun interface GetPhotoDetailUseCase {
-    suspend operator fun invoke(id: String): Flow<FetchState<Photo>>
+    operator fun invoke(id: String): Flow<FetchState<Photo>>
 }
