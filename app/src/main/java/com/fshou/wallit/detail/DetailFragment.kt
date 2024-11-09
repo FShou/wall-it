@@ -10,6 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import coil3.load
+import coil3.request.crossfade
+import coil3.request.transformations
+import coil3.transform.CircleCropTransformation
 import com.fshou.core.domain.model.Photo
 import com.fshou.core.util.FetchState
 import com.fshou.wallit.databinding.FragmentDetailBinding
@@ -64,12 +67,9 @@ class DetailFragment : Fragment() {
                     distanceY: Float
                 ): Boolean {
                     super.onScroll(e1, e2, distanceX, distanceY)
-                    // Called when a scroll gesture is detected
                     if (distanceY > 0) {
-                        println("User is scrolling up")
                         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
                     } else if (distanceY < 0) {
-                        println("User is scrolling down")
                         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
                     }
                     return true
@@ -82,7 +82,23 @@ class DetailFragment : Fragment() {
         }
         viewModel.photo.observe(viewLifecycleOwner) {
             if (it != null) {
-                ivPhoto.load(it.urlRegular)
+
+                var location: String? = null
+                if (!it.city.isNullOrEmpty() && !it.country.isNullOrEmpty()){
+                    location = "${it.city}, ${it.country}"
+                }
+
+                ivPhoto.load(it.urlRegular) {
+                    crossfade(true)
+                }
+                ivUser.load(it.userProfileImageUrl) {
+                    transformations(CircleCropTransformation())
+                    crossfade(true)
+                }
+                tvUsername.text = it.username
+                location?.let {
+                    tvLocation.text = location
+                }
             }
         }
     }
