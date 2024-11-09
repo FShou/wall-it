@@ -18,5 +18,7 @@ interface IPhotoRepository {
 
     suspend fun toggleBookmarkPhoto(photo: Photo)
 
+    fun checkBookmarkedPhoto(photoId: String): Flow<Boolean>
+
     fun getBookmarkedPhotos(): Flow<List<Photo>>
 }

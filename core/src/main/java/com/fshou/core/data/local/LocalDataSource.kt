@@ -9,7 +9,9 @@ class LocalDataSource(
 
     fun getAllPhotos() = photoDao.getAllPhotos()
 
-    suspend fun insertPhoto(photo: PhotoEntity) = photoDao.insertPhoto(photo)
+     suspend fun insertPhoto(photo: PhotoEntity) = photoDao.insertPhoto(photo)
 
     suspend fun deletePhoto(photo: PhotoEntity) = photoDao.deletePhoto(photo)
+
+    fun checkIsBookmarked(photoId: String) = photoDao.checkIsBookmarked(photoId)
 }

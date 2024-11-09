@@ -1,6 +1,7 @@
 package com.fshou.core.di
 
 import com.fshou.core.domain.repository.IPhotoRepository
+import com.fshou.core.domain.usecase.CheckBookmarkedPhotoUseCase
 import com.fshou.core.domain.usecase.GetBookmarkedPhotosUseCase
 import com.fshou.core.domain.usecase.GetPhotoDetailUseCase
 import com.fshou.core.domain.usecase.SearchPhotosUseCase
@@ -16,4 +17,6 @@ val interactionModule = module {
     single { GetBookmarkedPhotosUseCase(get<IPhotoRepository>()::getBookmarkedPhotos) }
 
     single { ToggleBookmarkPhotoUseCase(get<IPhotoRepository>()::toggleBookmarkPhoto) }
+
+    single { CheckBookmarkedPhotoUseCase(get<IPhotoRepository>()::checkBookmarkedPhoto) }
 }

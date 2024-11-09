@@ -13,6 +13,8 @@ import com.fshou.core.util.toPhoto
 import com.fshou.core.util.toPhotoEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 
@@ -50,12 +52,15 @@ class PhotoRepository(
 
     override suspend fun toggleBookmarkPhoto(photo: Photo) {
         val photoEntity = photo.toPhotoEntity()
-        if (photoEntity.isBookmarked) {
-            localDataSource.insertPhoto(photoEntity)
-        } else {
+        val isBookmarked = checkBookmarkedPhoto(photo.id).first()
+        if (isBookmarked) {
             localDataSource.deletePhoto(photoEntity)
+        } else {
+            localDataSource.insertPhoto(photoEntity)
         }
     }
+
+    override fun checkBookmarkedPhoto(photoId: String): Flow<Boolean> = localDataSource.checkIsBookmarked(photoId)
 
     override fun getBookmarkedPhotos(): Flow<List<Photo>> {
         return localDataSource.getAllPhotos().map { listPhoto ->

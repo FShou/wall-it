@@ -11,4 +11,5 @@
     <string name="photo_not_found">Try searching other or disable some filter</string>
     <string name="add_to_bookmark">Add to Bookmark</string>
     <string name="set_as_wallpaper">Set as Wallpaper</string>
+    <string name="remove_from_bookmark">Remove from Bookmark</string>
 </resources>

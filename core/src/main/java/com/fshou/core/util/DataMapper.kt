@@ -46,7 +46,6 @@ fun Photo.toPhotoEntity() = PhotoEntity(
     userProfileImageUrl,
     width,
     height,
-    isBookmarked
 )
 
 fun PhotoEntity.toPhoto() = Photo(
@@ -62,5 +61,4 @@ fun PhotoEntity.toPhoto() = Photo(
     userProfileImageUrl,
     width,
     height,
-    isBookmarked
 )

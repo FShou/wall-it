@@ -34,6 +34,4 @@ data class PhotoEntity(
     val width: Int,
     val height: Int,
 
-    @ColumnInfo(name = "is_bookmarked", defaultValue = "false")
-    val isBookmarked: Boolean = false
 )

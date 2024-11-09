@@ -20,4 +20,6 @@ interface PhotoDao {
     @Delete
     suspend fun deletePhoto(photo: PhotoEntity)
 
+    @Query("SELECT EXISTS(SELECT 1 FROM photo WHERE id = :photoId LIMIT 1)")
+    fun checkIsBookmarked(photoId: String): Flow<Boolean>
 }

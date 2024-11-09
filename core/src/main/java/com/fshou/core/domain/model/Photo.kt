@@ -15,6 +15,4 @@ data class Photo(
     val userProfileImageUrl: String,
     val width: Int,
     val height: Int,
-    val isBookmarked: Boolean = false
-
 )

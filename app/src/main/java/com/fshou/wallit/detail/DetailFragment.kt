@@ -15,6 +15,7 @@ import coil3.request.transformations
 import coil3.transform.CircleCropTransformation
 import com.fshou.core.domain.model.Photo
 import com.fshou.core.util.FetchState
+import com.fshou.wallit.R
 import com.fshou.wallit.databinding.FragmentDetailBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -80,26 +81,40 @@ class DetailFragment : Fragment() {
             gestureDetector.onTouchEvent(event)
             true
         }
-        viewModel.photo.observe(viewLifecycleOwner) {
-            if (it != null) {
+        btnBookmark.setOnClickListener {
+            viewModel.toggleBookmark()
+        }
 
-                var location: String? = null
-                if (!it.city.isNullOrEmpty() && !it.country.isNullOrEmpty()){
-                    location = "${it.city}, ${it.country}"
-                }
-
-                ivPhoto.load(it.urlRegular) {
-                    crossfade(true)
-                }
-                ivUser.load(it.userProfileImageUrl) {
-                    transformations(CircleCropTransformation())
-                    crossfade(true)
-                }
-                tvUsername.text = it.username
-                location?.let {
-                    tvLocation.text = location
-                }
+        viewModel.isPhotoBookmarked.observe(viewLifecycleOwner) {
+            if (it) {
+                btnBookmark.text = getString(R.string.remove_from_bookmark)
+            } else {
+                btnBookmark.text = getString(R.string.add_to_bookmark)
             }
         }
+
+
+            viewModel.photo.observe(viewLifecycleOwner) {
+                if (it != null) {
+
+                    var location: String? = null
+                    if (!it.city.isNullOrEmpty() && !it.country.isNullOrEmpty()) {
+                        location = "${it.city}, ${it.country}"
+                    }
+
+                    ivPhoto.load(it.urlRegular) {
+                        crossfade(true)
+                    }
+                    ivUser.load(it.userProfileImageUrl) {
+                        transformations(CircleCropTransformation())
+                        crossfade(true)
+                    }
+                    tvUsername.text = it.username
+                    location?.let {
+                        tvLocation.text = location
+                    }
+                }
+            }
+
     }
 }
