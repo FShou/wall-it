@@ -12,4 +12,5 @@
     <string name="add_to_bookmark">Add to Bookmark</string>
     <string name="set_as_wallpaper">Set as Wallpaper</string>
     <string name="remove_from_bookmark">Remove from Bookmark</string>
+    <string name="bookmark_empty">Try bookmarking a photo</string>
 </resources>

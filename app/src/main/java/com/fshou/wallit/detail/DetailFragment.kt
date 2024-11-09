@@ -84,6 +84,9 @@ class DetailFragment : Fragment() {
         btnBookmark.setOnClickListener {
             viewModel.toggleBookmark()
         }
+        btnWallpaper.setOnClickListener {
+            // TODO: start wallpaper activity intent
+        }
 
         viewModel.isPhotoBookmarked.observe(viewLifecycleOwner) {
             if (it) {
@@ -94,27 +97,27 @@ class DetailFragment : Fragment() {
         }
 
 
-            viewModel.photo.observe(viewLifecycleOwner) {
-                if (it != null) {
+        viewModel.photo.observe(viewLifecycleOwner) {
+            if (it != null) {
 
-                    var location: String? = null
-                    if (!it.city.isNullOrEmpty() && !it.country.isNullOrEmpty()) {
-                        location = "${it.city}, ${it.country}"
-                    }
+                var location: String? = null
+                if (!it.city.isNullOrEmpty() && !it.country.isNullOrEmpty()) {
+                    location = "${it.city}, ${it.country}"
+                }
 
-                    ivPhoto.load(it.urlRegular) {
-                        crossfade(true)
-                    }
-                    ivUser.load(it.userProfileImageUrl) {
-                        transformations(CircleCropTransformation())
-                        crossfade(true)
-                    }
-                    tvUsername.text = it.username
-                    location?.let {
-                        tvLocation.text = location
-                    }
+                ivPhoto.load(it.urlRegular) {
+                    crossfade(true)
+                }
+                ivUser.load(it.userProfileImageUrl) {
+                    transformations(CircleCropTransformation())
+                    crossfade(true)
+                }
+                tvUsername.text = it.username
+                location?.let {
+                    tvLocation.text = location
                 }
             }
+        }
 
     }
 }
