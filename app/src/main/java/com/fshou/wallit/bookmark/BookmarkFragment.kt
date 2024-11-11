@@ -20,8 +20,6 @@ class BookmarkFragment : Fragment() {
     private val binding by lazy { FragmentBookmarkBinding.inflate(layoutInflater) }
     private val rvAdapter by lazy { PhotoAdapter() }
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,10 +34,8 @@ class BookmarkFragment : Fragment() {
            setListPhoto(it)
         }
     }
-    fun FragmentBookmarkBinding.setUpView(){
-        // TODO: Use the ViewModel
+    private fun FragmentBookmarkBinding.setUpView(){
         rvAdapter.onItemClick = { photo ->
-            // TODO: PHOTO Argument for
             val bundle = Bundle().apply {
                 putString("photoId", photo.id)
             }

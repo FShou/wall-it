@@ -100,6 +100,8 @@ class DetailFragment : Fragment() {
         viewModel.photo.observe(viewLifecycleOwner) {
             if (it != null) {
 
+                println("PHOTO $it")
+
                 var location: String? = null
                 if (!it.city.isNullOrEmpty() && !it.country.isNullOrEmpty()) {
                     location = "${it.city}, ${it.country}"

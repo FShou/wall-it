@@ -45,7 +45,6 @@ class DiscoverFragment : Fragment() {
 
     private fun FragmentDiscoverBinding.setUpView() {
         rvAdapter.onItemClick = { photo ->
-            // TODO: PHOTO Argument for
             val bundle = Bundle().apply {
                 putString("photoId", photo.id)
             }

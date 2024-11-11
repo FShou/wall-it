@@ -13,4 +13,7 @@
     <string name="set_as_wallpaper">Set as Wallpaper</string>
     <string name="remove_from_bookmark">Remove from Bookmark</string>
     <string name="bookmark_empty">Try bookmarking a photo</string>
+    <string name="welcome_to_wallit">Welcome To Wallit</string>
+    <string name="find_beauty">Find beautiful wallpaper for your phone.</string>
+    <string name="continue_to_app">Continue to the app</string>
 </resources>
