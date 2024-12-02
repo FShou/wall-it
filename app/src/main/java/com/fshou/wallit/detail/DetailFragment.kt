@@ -1,6 +1,8 @@
 package com.fshou.wallit.detail
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.GestureDetector
 import androidx.fragment.app.Fragment
@@ -86,6 +88,13 @@ class DetailFragment : Fragment() {
         }
         btnWallpaper.setOnClickListener {
             // TODO: start wallpaper activity intent
+            val uri = Uri.parse("wallit://wallpaper")
+            startActivity(
+                Intent(Intent.ACTION_VIEW, uri).putExtra(
+                    "photo-url",
+                    viewModel.photo.value?.urlRegular
+                )
+            )
         }
 
         viewModel.isPhotoBookmarked.observe(viewLifecycleOwner) {

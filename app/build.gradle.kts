@@ -25,6 +25,12 @@ android {
                 "proguard-rules.pro"
             )
         }
+        create("compileOptions") {
+        }
+        create("buildFeatures") {
+        }
+        create("kotlinOptions") {
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -37,6 +43,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    dynamicFeatures += setOf(":wallpaper")
 }
 
 dependencies {
@@ -59,6 +66,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation (libs.androidx.work.runtime.ktx)
 
     implementation(project(":core"))
 }

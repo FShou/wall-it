@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_margin="3dp"
     android:padding="3dp"
-    android:background="@drawable/border_gradient"
     tools:layout_gravity="center"
 >
     <androidx.cardview.widget.CardView

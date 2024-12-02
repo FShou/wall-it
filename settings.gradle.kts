@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "Wall It"
 include(":app")
 include(":core")
+include(":wallpaper")
