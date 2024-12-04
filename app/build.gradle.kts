@@ -43,7 +43,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    dynamicFeatures += setOf(":wallpaper")
+    dynamicFeatures += setOf(":wallpaper", ":bookmark")
 }
 
 dependencies {

@@ -13,6 +13,7 @@ import com.fshou.core.presentation.PhotoAdapter
 import com.fshou.wallit.R
 import com.fshou.wallit.databinding.FragmentBookmarkBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
 
 class BookmarkFragment : Fragment() {
 
@@ -20,6 +21,10 @@ class BookmarkFragment : Fragment() {
     private val binding by lazy { FragmentBookmarkBinding.inflate(layoutInflater) }
     private val rvAdapter by lazy { PhotoAdapter() }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        loadKoinModules(bookmarkModule)
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
