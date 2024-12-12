@@ -10,6 +10,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="This feature is not complete" />
+        android:text="@string/this_feature_is_not_complete" />
 
 </FrameLayout>

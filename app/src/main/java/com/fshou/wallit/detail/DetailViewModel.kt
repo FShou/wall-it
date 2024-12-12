@@ -1,7 +1,6 @@
 package com.fshou.wallit.detail
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -11,7 +10,6 @@ import com.fshou.core.domain.model.Photo
 import com.fshou.core.domain.usecase.CheckBookmarkedPhotoUseCase
 import com.fshou.core.domain.usecase.GetPhotoDetailUseCase
 import com.fshou.core.domain.usecase.ToggleBookmarkPhotoUseCase
-import com.fshou.core.util.FetchState
 import kotlinx.coroutines.launch
 
 class DetailViewModel(

@@ -53,13 +53,11 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
 
     // room
-    val room_version = "2.6.1"
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
 
     // ktor
-    val ktorVersion = "3.0.0"
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.android)
     implementation(libs.ktor.client.content.negotiation)

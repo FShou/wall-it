@@ -16,4 +16,8 @@
     <string name="continue_to_app">Continue to the app</string>
     <string name="title_wallpaper">Set Wallpaper</string>
     <string name="title_bookmark">Bookmark</string>
+    <string name="home">Home</string>
+    <string name="this_feature_is_not_complete">This feature is not complete</string>
+    <string name="suggestion">Suggestion</string>
+    <string name="not_found">We haven\'t found what you\'re looking for</string>
 </resources>

@@ -1,20 +1,7 @@
 package com.fshou.core.util
 
-import android.view.View
 import com.fshou.core.R
-import com.fshou.core.util.ColorFilter.BLACK
-import com.fshou.core.util.ColorFilter.BLACK_AND_WHITE
-import com.fshou.core.util.ColorFilter.BLUE
-import com.fshou.core.util.ColorFilter.GREEN
-import com.fshou.core.util.ColorFilter.MAGENTA
-import com.fshou.core.util.ColorFilter.ORANGE
-import com.fshou.core.util.ColorFilter.PURPLE
-import com.fshou.core.util.ColorFilter.RED
-import com.fshou.core.util.ColorFilter.TEAL
-import com.fshou.core.util.ColorFilter.WHITE
-import com.fshou.core.util.ColorFilter.YELLOW
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
+
 
 enum class ColorFilter(val iconResId: Int, val displayName: String) {
     BLACK_AND_WHITE(R.drawable.bg_black_and_white, "Black & White"),

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.fshou.core.util.ColorFilter
 import com.fshou.core.util.ColorFilter.Companion.chipIdToColorFilterMap
 import com.fshou.core.util.ColorFilter.Companion.getColorFilterFromChipId
 import com.fshou.core.util.SortFilter

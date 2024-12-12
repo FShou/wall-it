@@ -1,7 +1,6 @@
 package com.fshou.core.presentation
 
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,7 +8,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil3.load
 import coil3.request.crossfade
-import coil3.request.placeholder
 import com.fshou.core.databinding.PhotoItemBinding
 import com.fshou.core.domain.model.Photo
 
