@@ -85,7 +85,7 @@ class WallpaperActivity : AppCompatActivity() {
 
     private fun setWallpaper(filePath: String, flag: Int?) {
         try {
-            val wallpaperManager = WallpaperManager.getInstance(this)
+            val wallpaperManager = WallpaperManager.getInstance(applicationContext)
             val file = File(filePath)
             if (file.exists()) {
                 val bitmap = BitmapFactory.decodeFile(file.absolutePath)

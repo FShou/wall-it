@@ -18,8 +18,9 @@ import org.koin.core.context.loadKoinModules
 class BookmarkFragment : Fragment() {
 
     private val viewModel: BookmarkViewModel by viewModel()
-    private val binding by lazy { FragmentBookmarkBinding.inflate(layoutInflater) }
-    private val rvAdapter by lazy { PhotoAdapter() }
+    private var _binding: FragmentBookmarkBinding? = null
+    private val binding get() = _binding!!
+    private var rvAdapter: PhotoAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,18 +30,27 @@ class BookmarkFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentBookmarkBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        binding.rvSearchPhoto.adapter = null
+        _binding = null
+        rvAdapter = null
+        super.onDestroyView()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        rvAdapter = PhotoAdapter()
         binding.setUpView()
         viewModel.listBookmarkedPhoto.observe(viewLifecycleOwner) {
-           setListPhoto(it)
+           binding.setListPhoto(it)
         }
     }
     private fun FragmentBookmarkBinding.setUpView(){
-        rvAdapter.onItemClick = { photo ->
+        rvAdapter?.onItemClick = { photo ->
             val bundle = Bundle().apply {
                 putString("photoId", photo.id)
             }
@@ -54,15 +64,15 @@ class BookmarkFragment : Fragment() {
 
     }
 
-    private fun setListPhoto(data: List<Photo>?) {
+    private fun FragmentBookmarkBinding.setListPhoto(data: List<Photo>?) {
         if (data.isNullOrEmpty()) {
-            binding.rvSearchPhoto.visibility = View.GONE
-            binding.emptyLayout.root.visibility = View.VISIBLE
-            binding.emptyLayout.tvSuggestion.text = getString(R.string.bookmark_empty)
+            rvSearchPhoto.visibility = View.GONE
+            emptyLayout.root.visibility = View.VISIBLE
+            emptyLayout.tvSuggestion.text = getString(R.string.bookmark_empty)
             return
         }
-        binding.rvSearchPhoto.visibility = View.VISIBLE
-        binding.emptyLayout.root.visibility = View.GONE
-        rvAdapter.submitList(data)
+        rvSearchPhoto.visibility = View.VISIBLE
+        emptyLayout.root.visibility = View.GONE
+        rvAdapter?.submitList(data)
     }
 }

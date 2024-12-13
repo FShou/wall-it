@@ -26,12 +26,19 @@ class DetailFragment : Fragment() {
 
 
     private val viewModel: DetailViewModel by viewModel()
-    private val binding by lazy { FragmentDetailBinding.inflate(layoutInflater) }
+    private var _binding: FragmentDetailBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentDetailBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

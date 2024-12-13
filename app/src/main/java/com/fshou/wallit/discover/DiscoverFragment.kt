@@ -22,29 +22,34 @@ import org.koin.androidx.viewmodel.ext.android.activityViewModel
 class DiscoverFragment : Fragment() {
 
     private val viewModel by activityViewModel<DiscoverViewModel>()
-    private val binding by lazy {
-        FragmentDiscoverBinding.inflate(layoutInflater)
-    }
-    private val rvAdapter by lazy { PhotoAdapter() }
-    private val filterBottomSheetFragment = FilterBottomSheetFragment()
-
+    private var _binding: FragmentDiscoverBinding? = null
+    private val binding get() = _binding!!
+    private var rvAdapter: PhotoAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentDiscoverBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        rvAdapter = PhotoAdapter()
         binding.setUpView()
         viewModel.listSearchedPhoto.observe(viewLifecycleOwner, ::handleSearchFetch)
 
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        rvAdapter = null
+    }
+
     private fun FragmentDiscoverBinding.setUpView() {
-        rvAdapter.onItemClick = { photo ->
+        rvAdapter?.onItemClick = { photo ->
             val bundle = Bundle().apply {
                 putString("photoId", photo.id)
             }
@@ -56,6 +61,7 @@ class DiscoverFragment : Fragment() {
         rvSearchPhoto.adapter = rvAdapter
         rvSearchPhoto.layoutManager = staggered
         btnFilter.setOnClickListener {
+            val filterBottomSheetFragment = FilterBottomSheetFragment()
             activity?.supportFragmentManager?.let {
                 filterBottomSheetFragment.show(
                     it, FilterBottomSheetFragment.TAG
@@ -85,20 +91,20 @@ class DiscoverFragment : Fragment() {
             }
 
             is FetchState.Success -> {
-                setListPhoto(it.data)
+                binding.setListPhoto(it.data)
             }
         }
     }
 
-    private fun setListPhoto(data: List<Photo>?) {
+    private fun FragmentDiscoverBinding.setListPhoto(data: List<Photo>?) {
         if (data.isNullOrEmpty()) {
-            binding.rvSearchPhoto.visibility = View.GONE
-            binding.emptyLayout.root.visibility = View.VISIBLE
-            binding.emptyLayout.tvSuggestion.text = getString(R.string.photo_not_found)
+            rvSearchPhoto.visibility = View.GONE
+            emptyLayout.root.visibility = View.VISIBLE
+            emptyLayout.tvSuggestion.text = getString(R.string.photo_not_found)
             return
         }
-        binding.rvSearchPhoto.visibility = View.VISIBLE
-        binding.emptyLayout.root.visibility = View.GONE
-        rvAdapter.submitList(data)
+        rvSearchPhoto.visibility = View.VISIBLE
+        emptyLayout.root.visibility = View.GONE
+        rvAdapter?.submitList(data)
     }
 }

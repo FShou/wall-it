@@ -6,13 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.fshou.wallit.MainActivity
 import com.fshou.wallit.databinding.FragmentOnBoardingBinding
 import com.fshou.wallit.utils.applyMarginAndScalePageTransformer
 import com.fshou.wallit.utils.onPageSelected
 import com.fshou.wallit.utils.setCurrentItemWithSmoothScroll
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -38,6 +37,11 @@ class OnBoardingFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        pageChangeJob?.cancel()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.setupView()
@@ -45,7 +49,7 @@ class OnBoardingFragment : Fragment() {
 
     private fun restartPageChangeCoroutine() {
         pageChangeJob?.cancel()
-        pageChangeJob = CoroutineScope(Dispatchers.Main).launch {
+        pageChangeJob = lifecycleScope.launch {
             delay(SLIDE_DELAY)
             slideToNextPage()
         }

@@ -25,12 +25,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-        create("compileOptions") {
-        }
-        create("buildFeatures") {
-        }
-        create("kotlinOptions") {
-        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -53,6 +47,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.10")
 
     // navigation
     implementation(libs.androidx.navigation.fragment.ktx)
