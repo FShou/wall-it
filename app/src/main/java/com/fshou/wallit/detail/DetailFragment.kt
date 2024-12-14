@@ -94,7 +94,6 @@ class DetailFragment : Fragment() {
             viewModel.toggleBookmark()
         }
         btnWallpaper.setOnClickListener {
-            // TODO: start wallpaper activity intent
             val uri = Uri.parse("wallit://wallpaper")
             startActivity(
                 Intent(Intent.ACTION_VIEW, uri).putExtra(

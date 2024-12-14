@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                >
+                tools:ignore="UseCompoundDrawables">
                 <ImageView
                     android:id="@+id/iv_user"
                     android:layout_width="64dp"

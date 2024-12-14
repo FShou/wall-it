@@ -52,7 +52,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
-                <!--                TODO: Shape of the button filter is not matching the edit text -->
                 <Button
                     android:id="@+id/btn_filter"
                     style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"

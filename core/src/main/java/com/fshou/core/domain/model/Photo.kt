@@ -7,7 +7,6 @@ data class Photo(
     val country: String? = null,
     val city: String? = null,
     val urlRegular: String,
-    // TODO: Url Thumbnail instead for List Photo
     val urlThumb: String,
     val updatedAt: String,
     val username: String,
