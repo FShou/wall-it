@@ -67,6 +67,10 @@ dependencies {
     // koin
     api(libs.koin.android)
 
+    // DB-encrypt
+    implementation(libs.android.database.sqlcipher)
+    implementation(libs.androidx.sqlite.ktx)
+
     // coil
     api(libs.coil)
     api(libs.coil.network.okhttp)
