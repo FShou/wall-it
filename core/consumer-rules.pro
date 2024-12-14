@@ -86,21 +86,21 @@
 -keep class io.netty.** {*; }
 -keep class kotlin.reflect.jvm.internal.** { *; }
 
-# Joda-Time Library
--keep class org.joda.time.** { *; }
--dontwarn org.joda.time.**
-
-# Google Guava (https://github.com/google/guava/wiki/UsingProGuardWithGuava)
-
--dontwarn javax.lang.model.element.Modifier
-
-# Joda-Time Library
--keep class org.joda.time.** { *; }
--dontwarn org.joda.time.**
-
-# Google Guava (https://github.com/google/guava/wiki/UsingProGuardWithGuava)
-
--dontwarn javax.lang.model.element.Modifier
+## Joda-Time Library
+#-keep class org.joda.time.** { *; }
+#-dontwarn org.joda.time.**
+#
+## Google Guava (https://github.com/google/guava/wiki/UsingProGuardWithGuava)
+#
+#-dontwarn javax.lang.model.element.Modifier
+#
+## Joda-Time Library
+#-keep class org.joda.time.** { *; }
+#-dontwarn org.joda.time.**
+#
+## Google Guava (https://github.com/google/guava/wiki/UsingProGuardWithGuava)
+#
+#-dontwarn javax.lang.model.element.Modifier
 
 # Note: We intentionally don't add the flags we'd need to make Enums work.
 # That's because the Proguard configuration required to make it work on
@@ -137,7 +137,7 @@
 #}
 
 # Striped64, LittleEndianByteArray, UnsignedBytes, AbstractFuture
--dontwarn sun.misc.Unsafe
+#-dontwarn sun.misc.Unsafe
 
 # Striped64 appears to make some assumptions about object layout that
 # really might not be safe. This should be investigated.
@@ -149,22 +149,22 @@
 #  <fields>;
 #}
 
--dontwarn java.lang.SafeVarargs
-
--keep class java.lang.Throwable {
-  *** addSuppressed(...);
-}
+#-dontwarn java.lang.SafeVarargs
+#
+#-keep class java.lang.Throwable {
+#  *** addSuppressed(...);
+#}
 
 # Futures.getChecked, in both of its variants, is incompatible with proguard.
 
 # Used by AtomicReferenceFieldUpdater and sun.misc.Unsafe
--keepclassmembers class com.google.common.util.concurrent.AbstractFuture** {
-  *** waiters;
-  *** value;
-  *** listeners;
-  *** thread;
-  *** next;
-}
+#-keepclassmembers class com.google.common.util.concurrent.AbstractFuture** {
+#  *** waiters;
+#  *** value;
+#  *** listeners;
+#  *** thread;
+#  *** next;
+#}
 #-keepclassmembers class com.google.common.util.concurrent.AtomicDouble {
 #  *** value;
 #}
@@ -177,13 +177,13 @@
 # to have class merging or similar tricks applied to these classes and their
 # fields. It's safe to allow obfuscation, since the by-name references are
 # already preserved in the -keep statement above.
--keep,allowshrinking,allowobfuscation class com.google.common.util.concurrent.AbstractFuture** {
-  <fields>;
-}
+#-keep,allowshrinking,allowobfuscation class com.google.common.util.concurrent.AbstractFuture** {
+#  <fields>;
+#}
 
 # Futures.getChecked (which often won't work with Proguard anyway) uses this. It
 # has a fallback, but again, don't use Futures.getChecked on Android regardless.
--dontwarn java.lang.ClassValue
+#-dontwarn java.lang.ClassValue
 
 # MoreExecutors references AppEngine
 #-dontnote com.google.appengine.api.ThreadManager
@@ -201,13 +201,13 @@
 
 
 # Custom rules to ignore warnings from Google Guava
--dontwarn com.google.common.collect.**
--dontwarn com.google.common.base.Converter
--dontwarn com.google.common.cache.**
--dontwarn com.google.common.util.concurrent.**
--dontwarn com.google.common.eventbus.Subscriber
--dontwarn com.google.common.eventbus.SubscriberRegistry
--dontwarn com.google.common.hash.**
+#-dontwarn com.google.common.collect.**
+#-dontwarn com.google.common.base.Converter
+#-dontwarn com.google.common.cache.**
+#-dontwarn com.google.common.util.concurrent.**
+#-dontwarn com.google.common.eventbus.Subscriber
+#-dontwarn com.google.common.eventbus.SubscriberRegistry
+#-dontwarn com.google.common.hash.**
 
 ## DB
 -keep,includedescriptorclasses class net.sqlcipher.** { *; }
@@ -222,7 +222,7 @@
 -keep class * implements org.koin.core.module.Module { *; }
 -keep class **Kt { *; }  # Kotlin top-level files
 
-# Keep your DI package
+# Keep  DI package
 -keep class com.fshou.core.di.** { *; }
 
 # Prevent obfuscation of Koin method names
