@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">api.unsplash.com</domain>
+        <pin-set >
+            <pin digest="SHA-256">/RZTb/MhDwX/2x/F8RxwIKSTpsUKp/sank4QbmfwCx4=</pin>
+            <!-- backup pin -->
+            <pin digest="SHA-256">sIyusJrUkgaV+NuUk41j/lNmX1HYRzOm0UglcO11Dok=</pin>
+            <pin digest="SHA-256">cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A=</pin>
+        </pin-set>
+    </domain-config>
+</network-security-config>
