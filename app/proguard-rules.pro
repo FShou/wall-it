@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Entry point to the app.
+-keep class com.fshou.wallit.Application { *; }
+
+# Keep activity
+-keep class com.fshou.wallit.wallpaper.**Activity { *; }
