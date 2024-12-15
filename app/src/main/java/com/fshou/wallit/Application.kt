@@ -1,6 +1,7 @@
 package com.fshou.wallit
 
 import android.app.Application
+import android.content.Context
 import coil3.ImageLoader
 import coil3.PlatformContext
 import coil3.SingletonImageLoader
@@ -16,7 +17,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-class Application : Application(), SingletonImageLoader.Factory{
+class Application : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
@@ -30,22 +31,5 @@ class Application : Application(), SingletonImageLoader.Factory{
                 viewModelModule
             )
         }
-    }
-
-    override fun newImageLoader(context: PlatformContext): ImageLoader {
-        val imageLoader = ImageLoader.Builder(context)
-            .memoryCache {
-                MemoryCache.Builder()
-                    .maxSizePercent(context,0.25)
-                    .build()
-            }
-            .diskCache {
-                DiskCache.Builder()
-                    .directory(context.cacheDir.resolve("image_cache"))
-                    .maxSizePercent(0.02)
-                    .build()
-            }
-
-        return imageLoader.build()
     }
 }
